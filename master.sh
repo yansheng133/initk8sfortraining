@@ -5,7 +5,7 @@ YEL='\033[1;33m' # warning
 NC='\033[0m' # No Color
 
 printf "${GRN}==Prepare install kubernetes training environment for ubuntu 18.04==${NC}\n"
-
+sudo hostnamectl set-hostname master
 sleep 1
 
 printf "${RED}==phase 1: modify file system==${NC}\n"
