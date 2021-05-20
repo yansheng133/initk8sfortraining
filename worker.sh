@@ -16,20 +16,20 @@ OSVERSION=$(cat /etc/lsb-release |grep DISTRIB_CODENAME |cut -d '=' -f 2)
 # verify os info
 if [ "${OSVERSION}" = 'bionic' ];
 then
-    printf "${YEL} --OS Verified-- ${NC}\n"
+    printf "${YEL}--OS Verified-- ${NC}\n"
 else
     printf "${RED}==OS is not Verified, use ubuntu 18.0==${NC}\n"
     exit 0
 fi
 
 # check fstab
-printf "${GRN} --check FSTAB for swap-- ${NC}\n"
+printf "${GRN}--check FSTAB for swap-- ${NC}\n"
 
 # backup fstab
-printf "${GRN} --backup fstab to fstab.bck-- ${NC}\n"
+printf "${GRN}--backup fstab to fstab.bck-- ${NC}\n"
 sudo cp /etc/fstab /etc/fstab.bck
 
-printf "${GRN} --swap off-- ${NC}\n"
+printf "${GRN}--swap off-- ${NC}\n"
 sudo swapoff -a
 
 # modify fstab
@@ -38,18 +38,18 @@ sudo sed -ri.bak ':a;N;$!ba;s/#===swap===#.+#===swap===#//' /etc/fstab
 # remount all
 sudo mount -a
 
-printf "${GEN}==Phase 1 Complete==${NC}\n"
-printf "${GEN}==Phase 2: update system and install kubernetes==${NC}\n"
+printf "${GRN}==Phase 1 Complete==${NC}\n"
+printf "${GRN}==Phase 2: update system and install kubernetes==${NC}\n"
 sleep 1
 
-printf "${GEN} --update system-- ${NC}\n"
+printf "${GRN}--update system-- ${NC}\n"
 sudo apt-get update && sudo apt-get upgrade -y
 
-printf "${GEN} --Install Docker-- ${NC}\n"
+printf "${GRN}--Install Docker-- ${NC}\n"
 sleep 1
 
 sudo apt-get install -y docker.io
-printf "${GEN} --install kubeadm, kubelet, and kubectl-- ${NC}\n"
+printf "${GRN}--install kubeadm, kubelet, and kubectl-- ${NC}\n"
 sleep 1
 
 sudo sh -c "echo 'deb http://apt.kubernetes.io/ kubernetes-xenial main' >> /etc/apt/sources.list.d/kubernetes.list"
@@ -60,9 +60,9 @@ sudo apt-get update
 
 sudo apt-get install -y kubeadm=1.20.1-00 kubelet=1.20.1-00 kubectl=1.20.1-00
 
-printf "${YEL} --LOCK kubelet kubeadm kubectl version-- ${NC}\n"
+printf "${YEL}--LOCK kubelet kubeadm kubectl version-- ${NC}\n"
 sudo apt-mark hold kubelet kubeadm kubectl
 
 sudo kubeadm init --kubernetes-version 1.20.1 --pod-network-cidr 10.6.0.0/16 |tee kubeadminfo.txt
 
-printf "${GEN}==Installation Completed==${NC}\n"
+printf "${GRN}==Installation Completed==${NC}\n"
