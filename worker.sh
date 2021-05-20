@@ -45,6 +45,10 @@ sleep 1
 printf "${GRN}--update system-- ${NC}\n"
 sudo apt-get update && sudo apt-get upgrade -y
 
+printf "${GRN}--install nfs package-- ${NC}\n"
+sudo apt -y install nfs-common
+sudo sed -i 's/# Domain = localdomain/Domain = training.inwinstack/g' /etc/idmapd.conf
+
 printf "${GRN}--Install Docker-- ${NC}\n"
 sleep 1
 

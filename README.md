@@ -4,6 +4,10 @@ this is training materials.
 3. you are ready for K8S.
 have fun :)
 
+env: 
+1. kubernetes: 1.20
+2. 1 master, 1 worker
+2. storage: NFS@master
+
 working items:
-1. NFS not ready.
-2. ingress controller undefine.
+1. ingress controller undefine.
