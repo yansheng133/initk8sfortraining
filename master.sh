@@ -88,6 +88,9 @@ printf "${GRN}--wait for pods READY for few seconds-- ${NC}\n"
 sleep 1m
 kubectl get node
 
+printf "${GRN}--init measure server-- ${NC}\n"
+kubectl apply -f components.yaml
+
 printf "${GRN}--setup keypair-- ${NC}\n"
 ssh-keygen -t dsa -N "" -f $HOME/.ssh/id_dsa
 
