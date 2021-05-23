@@ -5,12 +5,13 @@
 3. join worker.
 you are ready, have fun :)
 
-## environment
+## environment requirement
 1. kubernetes: 1.20
 2. 1 master, 1 worker
-3. storage: NFS@master
-4. ingress controller: traefik
-5. measure server installed
+3. 4 core, 8 G RAM 60G local Disk(recommand!)
+4. storage: NFS@master
+5. ingress controller: traefik
+6. measure server installed
 
 ## reference
 1. ingress controller: [traefik](https://doc.traefik.io/traefik/v1.7/user-guide/kubernetes/)
