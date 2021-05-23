@@ -13,4 +13,5 @@ you are ready, have fun :)
 5. measure server installed
 
 ## reference
-1. [ingress controller](official: https://doc.traefik.io/traefik/v1.7/user-guide/kubernetes/ "traefik")
+1. ingress controller: [traefik](official: https://doc.traefik.io/traefik/v1.7/user-guide/kubernetes/)
+2. measure server: [here](https://github.com/kubernetes-sigs/metrics-server)
