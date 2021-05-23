@@ -7,7 +7,10 @@ have fun :)
 env: 
 1. kubernetes: 1.20
 2. 1 master, 1 worker
-2. storage: NFS@master
+3. storage: NFS@master
+4. ingress controller: traefik
+5. measure server installed
 
-working items:
-1. ingress controller undefine.
+ref: 
+1. ingress controller:
+  1.1. official: https://doc.traefik.io/traefik/v1.7/user-guide/kubernetes/

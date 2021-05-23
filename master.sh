@@ -90,6 +90,12 @@ kubectl get node
 
 printf "${GRN}--init measure server-- ${NC}\n"
 kubectl apply -f components.yaml
+printf "${YEL}--measure server container will up until worker joined.-- ${NC}\n"
+
+printf "${GRN}--init ingress controller: traefik-- ${NC}\n"
+kubectl create -f ingress.rbac.yaml
+kubectl create -f traefik-ds.yaml
+printf "${YEL}--traefik will up until worker joined.-- ${NC}\n"
 
 printf "${GRN}--setup keypair-- ${NC}\n"
 ssh-keygen -t dsa -N "" -f $HOME/.ssh/id_dsa
