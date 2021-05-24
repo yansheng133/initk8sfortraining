@@ -98,7 +98,7 @@ kubectl create -f traefik-ds.yaml
 printf "${YEL}--traefik will up until worker joined.-- ${NC}\n"
 
 printf "${GRN}--setup keypair-- ${NC}\n"
-ssh-keygen -t dsa -N "" -f $HOME/.ssh/id_dsa
+ssh-keygen -t dsa -N "" -f $HOME/.ssh/k8s
 
 printf "${GRN}==Installation Completed==${NC}\n"
 printf "${YEL}1. master node setup, run worker.sh to setup worker.${NC}\n"

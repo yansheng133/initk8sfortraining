@@ -6,7 +6,7 @@ NC='\033[0m' # No Color
 
 printf "${GRN}==Prepare install kubernetes training environment for ubuntu 18.04==${NC}\n"
 sudo hostnamectl set-hostname worker.inwinstack.lab
-IPNAME=$(ifconfig ens3 |grep inet|cut -d ' ' -f 10 |head -n 1)
+IPNAME=$(ifconfig ens4 |grep inet|cut -d ' ' -f 10 |head -n 1)
 sudo echo "${IPNAME} worker.inwinstack.lab" >> /etc/hosts
 sleep 1
 
@@ -68,5 +68,8 @@ sudo apt-get install -y kubeadm=1.20.1-00 kubelet=1.20.1-00 kubectl=1.20.1-00
 
 printf "${YEL}--LOCK kubelet kubeadm kubectl version-- ${NC}\n"
 sudo apt-mark hold kubelet kubeadm kubectl
+
+printf "${GRN}--setup keypair-- ${NC}\n"
+ssh-keygen -t dsa -N "" -f $HOME/.ssh/k8s
 
 printf "${GRN}==Installation Completed==${NC}\n"
