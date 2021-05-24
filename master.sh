@@ -6,7 +6,7 @@ NC='\033[0m' # No Color
 
 printf "${GRN}==Prepare install kubernetes training environment for ubuntu 18.04==${NC}\n"
 sudo hostnamectl set-hostname master.inwinstack.lab
-IPNAME=$(ifconfig ens3 |grep inet|cut -d ' ' -f 10 |head -n 1)
+IPNAME=$(ifconfig ens4 |grep inet|cut -d ' ' -f 10 |head -n 1)
 sudo echo "${IPNAME} master.inwinstack.lab" >> /etc/hosts
 
 sleep 1
@@ -98,7 +98,7 @@ kubectl create -f traefik-ds.yaml
 printf "${YEL}--traefik will up until worker joined.-- ${NC}\n"
 
 printf "${GRN}--setup keypair-- ${NC}\n"
-ssh-keygen -t dsa -N "" -f $HOME/.ssh/id_dsa
+ssh-keygen -t dsa -N "" -f $HOME/.ssh/k8s
 
 printf "${GRN}==Installation Completed==${NC}\n"
 printf "${YEL}1. master node setup, run worker.sh to setup worker.${NC}\n"

@@ -6,7 +6,7 @@ NC='\033[0m' # No Color
 
 printf "${GRN}==Prepare install kubernetes training environment for ubuntu 18.04==${NC}\n"
 sudo hostnamectl set-hostname worker.inwinstack.lab
-IPNAME=$(ifconfig ens3 |grep inet|cut -d ' ' -f 10 |head -n 1)
+IPNAME=$(ifconfig ens4 |grep inet|cut -d ' ' -f 10 |head -n 1)
 sudo echo "${IPNAME} worker.inwinstack.lab" >> /etc/hosts
 sleep 1
 
