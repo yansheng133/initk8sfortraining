@@ -3,9 +3,9 @@ apiVersion: v1
 kind: Namespace
 metadata:
   creationTimestamp: null
-  name: production
+  name: internalservice
   labels:
-    name: externalservice
+    name: internalservice
 spec: {}
 status: {}
 ---
@@ -14,20 +14,20 @@ kind: Pod
 metadata:
   creationTimestamp: null
   labels:
-    run: productionweb
-  name: productionweb
-  namespace: production
+    run: internalweb
+  name: internalweb
+  namespace: internalservice
 spec:
   initContainers:
   - name: webcontentgen
     image: busybox
-    command: ['sh', '-c', "echo '==this is external web service==' > /opt/web/index.html"]
+    command: ['sh', '-c', "echo '==this is internal web service==' > /opt/web/index.html"]
     volumeMounts:
     - mountPath: /opt/web
       name: web
   containers:
   - image: nginx
-    name: productionweb
+    name: internalweb
     ports:
     - containerPort: 80
     volumeMounts:
@@ -45,16 +45,16 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    run: productionweb
-  name: productionweb
-  namespace: production
+    run: internalweb
+  name: internalweb
+  namespace: internalservice
 spec:
   ports:
   - port: 80
     protocol: TCP
     targetPort: 80
   selector:
-    run: productionweb
+    run: internalweb
   type: NodePort
 status:
   loadBalancer: {}
@@ -66,7 +66,7 @@ metadata:
   labels:
     run: networkpod
   name: networkpod
-  namespace: production
+  namespace: internalservice
 spec:
   containers:
   - args:
