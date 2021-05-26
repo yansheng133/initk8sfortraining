@@ -10,7 +10,14 @@ spec:
   - name: genlog
     image: busybox
     args: [/bin/sh, -c,
-            'i=0; while true; do echo "$i: $(date)" >> /var/log/log.file; i=$((i+1)); sleep 1; done']
+            'i=0; while true; do echo "$(date)" >> /var/log/log.file; i=$((i+1)); sleep 1; done']
+    volumeMounts:
+    - mountPath: /var/log
+      name: log
+  - name: sidebike
+    image: busybox
+    args: [/bin/sh, -c,
+           'tail -n+1 -f /var/log/log.file']
     volumeMounts:
     - mountPath: /var/log
       name: log
