@@ -3,18 +3,19 @@ kind: Pod
 metadata:
   creationTimestamp: null
   labels:
-    run: nginx
-  name: multicontainer
+    run: multiplecontainers
+  name: multiplecontainers
 spec:
   containers:
   - image: nginx
-    name: nginx
+    name: multiplecontainers
   - image: redis
     name: redis
   - image: memcached
     name: memcached
   - image: consul
     name: consul
+    resources: {}
   dnsPolicy: ClusterFirst
   restartPolicy: Always
 status: {}
