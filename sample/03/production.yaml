@@ -5,7 +5,7 @@ metadata:
   creationTimestamp: null
   name: production
   labels:
-    name: externalservice
+    conn: ok
 spec: {}
 status: {}
 ---
