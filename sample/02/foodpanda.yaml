@@ -3,11 +3,11 @@ kind: Pod
 metadata:
   creationTimestamp: null
   labels:
-    run: foodbar
-  name: foodbar
+    run: foodpanda
+  name: foodpanda
 spec:
   containers:
-  - name: foodbar
+  - name: foodpanda
     image: busybox
     args: [/bin/sh, -c,
             'i=0; while true; do echo "$(date) unable response"; i=$((i+1)); sleep 1; done' ]
