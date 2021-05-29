@@ -9,7 +9,7 @@ spec:
   volumes:
     - name: nfspvc
       persistentVolumeClaim:
-        claimName: nfspvc
+        claimName: nfs-pvc
   containers:
   - args:
     - /bin/sleep
