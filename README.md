@@ -1,11 +1,11 @@
 # this is training materials.
-## notice
+## install
 1. git clone https://github.com/yansheng133/initk8sfortraining && cd initk8sfortraining
 2. sudo ./nfs.sh && sudo ./master.sh
 3. join worker.
 you are ready, have fun :)
 
-## info
+## notice
 1. if your nis is not ens4, edit master.sh, worker.sh line 9 `ens4` and nfs.sh line 19 to your nic.
 2. kubeadm info save at initk8sfortraining/kubeadminfo.txt
 3. nfs info save at initk8sfortraining/nfs.info 
