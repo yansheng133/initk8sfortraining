@@ -2,8 +2,9 @@
 ## install
 1. git clone https://github.com/yansheng133/initk8sfortraining && cd initk8sfortraining
 2. sudo ./nfs.sh && sudo ./master.sh
-3. join worker.
-4. support more workers.
+3. use sudo ./worker.sh to join workers at 'worker node'.
+4. support ease join more workers.
+
 you are ready, have fun :)
 
 ## notice
