@@ -5,9 +5,10 @@ YEL='\033[1;33m' # warning
 NC='\033[0m' # No Color
 
 printf "${GRN}==Prepare install kubernetes training environment for ubuntu 18.04==${NC}\n"
-sudo hostnamectl set-hostname worker.inwinstack.lab
+WORKERNAME=$RANDOM
+sudo hostnamectl set-hostname worker${WORKERNAME}.inwinstack.lab
 IPNAME=$(ifconfig ens4 |grep inet|cut -d ' ' -f 10 |head -n 1)
-sudo echo "${IPNAME} worker.inwinstack.lab" >> /etc/hosts
+sudo echo "${IPNAME} worker${WORKERNAME}.inwinstack.lab" >> /etc/hosts
 sleep 1
 
 printf "${RED}==phase 1: modify file system==${NC}\n"
