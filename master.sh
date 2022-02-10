@@ -49,10 +49,15 @@ sleep 1
 printf "${GRN}--update system--${NC}"
 sudo apt-get update && sudo apt-get upgrade -y
 
-printf "${GRN}--Install Docker--${NC}\n"
+printf "${GRN}--Install Docker CE and ContainerD--${NC}\n"
 sleep 1
 
-sudo apt-get install -y docker.io
+sudo apt-get install ca-certificates curl gnupg lsb-release -y
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io
+
 printf "${GRN}--install kubeadm, kubelet, and kubectl--${NC}\n"
 sleep 1
 
@@ -62,12 +67,12 @@ sudo sh -c "curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-
 
 sudo apt-get update
 
-sudo apt-get install -y kubeadm=1.20.1-00 kubelet=1.20.1-00 kubectl=1.20.1-00
+sudo apt-get install -y kubeadm=1.22.1-00 kubelet=1.22.1-00 kubectl=1.22.1-00
 
 printf "${YEL}--LOCK kubelet kubeadm kubectl version-- ${NC}\n"
 sudo apt-mark hold kubelet kubeadm kubectl
 
-sudo kubeadm init --kubernetes-version 1.20.1 --pod-network-cidr 10.6.0.0/16 |tee kubeadminfo.txt
+sudo kubeadm init --kubernetes-version 1.22.1 --pod-network-cidr 10.6.0.0/16 |tee kubeadminfo.txt
 
 sleep 6
 
