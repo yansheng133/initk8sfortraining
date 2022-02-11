@@ -12,10 +12,10 @@ you are ready, have fun :)
 2. kubeadm info save at initk8sfortraining/kubeadminfo.txt
 3. nfs info save at initk8sfortraining/nfs.info 
 
-## environment requirement
-1. kubernetes: 1.20
-2. 1 master, 1 worker
-3. 4 core, 8 G RAM 60G local Disk(recommand!)
+## environment recommand
+1. kubernetes: 1.22.1
+2. 1 master, 2 worker
+3. 4 core, 8 G RAM 70G local Disk(recommand!)
 4. storage: NFS@master
 5. ingress controller: traefik
 6. measure server installed
