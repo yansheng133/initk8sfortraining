@@ -130,3 +130,6 @@ printf "${YEL}3. if you need join worker and token expired, regen it, kubeadm --
 printf "${YEL}4. when worker.sh done, run join command on worker below.${NC}\n"
 printf "${GRN}==join worker command==${NC}\n"
 tail kubeadminfo.txt -n 2
+
+printf "${GRN}--taint master if required-- ${NC}\n"
+echo "kubectl taint node --all node-role.kubernetes.io/master-"
