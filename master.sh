@@ -6,9 +6,9 @@ NC='\033[0m' # No Color
 
 printf "${GRN}==Prepare install kubernetes training environment for ubuntu 18.04==${NC}\n"
 MASTERNAME=$RANDOM
-sudo hostnamectl set-hostname master${MASTERNAME}.inwinstack.lab
+sudo hostnamectl set-hostname master${MASTERNAME}.suserancher.lab
 IPNAME=$(ifconfig ens4 |grep inet|cut -d ' ' -f 10 |head -n 1)
-sudo echo "${IPNAME} master${MASTERNAME}.inwinstack.lab" >> /etc/hosts
+sudo echo "${IPNAME} master${MASTERNAME}.suserancher.lab" >> /etc/hosts
 
 sleep 1
 
